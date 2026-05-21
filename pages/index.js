@@ -1,100 +1,197 @@
 import Head from "next/head";
 
-const heroImage = "data:image/jpeg;base64,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";
-
-const values = ["Faith", "Gentleness", "Scripture", "Stories", "Prayer", "Hope"];
 const storyCards = [
-  { title: "Stories by J.M.", text: "Faith-filled Christian stories written in a warm, personal voice that welcomes readers into hope, healing, and reflection." },
-  { title: "Reflections for the Heart", text: "Short devotionals, quiet encouragement, and Scripture-centered thoughts for everyday life." },
-  { title: "A Gentle Place to Return", text: "A peaceful home for Jeanna’s writings, created with warmth, simplicity, and room for the Spirit to speak." },
+  {
+    title: "Stories by J.M.",
+    text: "Warm Christian storytelling written in a personal voice, with room for faith, memory, healing, and hope.",
+  },
+  {
+    title: "Reflections for the Heart",
+    text: "Gentle devotional thoughts for quiet mornings, late evenings, and the moments when the soul needs encouragement.",
+  },
+  {
+    title: "A Place to Return",
+    text: "A peaceful home for Jeanna’s writings, built around Scripture, tenderness, and the steady light of God’s love.",
+  },
 ];
 
-export default function HomePage() {
+const values = ["Faith", "Story", "Prayer", "Comfort", "Hope", "Restoration"];
+
+function Header() {
+  return (
+    <header className="site-header fixed left-4 right-4 top-4 z-50 rounded-[1.75rem] border border-gold/20 bg-night/45 shadow-2xl shadow-black/20 backdrop-blur-xl transition-all duration-300">
+      <div className="mx-auto flex max-w-7xl items-center justify-between gap-6 px-6 py-4">
+        <a href="#home" className="flex items-center gap-5" aria-label="Faithful Words home">
+          <img src="/images/goddome-logo.svg" alt="God Dome" className="h-20 w-auto max-w-[220px] object-contain drop-shadow-gold" />
+          <div className="hidden sm:block">
+            <p className="font-serif text-3xl font-bold leading-tight text-cream">Faithful Words</p>
+            <p className="mt-1 text-xs font-black uppercase tracking-[0.34em] text-gold">Christian Stories by J.M.</p>
+          </div>
+        </a>
+
+        <nav className="hidden items-center gap-8 text-sm font-bold text-cream/90 lg:flex">
+          <a className="nav-link" href="#welcome">Welcome</a>
+          <a className="nav-link" href="#stories">Stories</a>
+          <a className="nav-link" href="#goddome">God Dome</a>
+          <a className="nav-link" href="#contact">Contact</a>
+        </nav>
+
+        <a href="#stories" className="rounded-full bg-gradient-to-br from-[#f7d078] to-[#b8792c] px-6 py-3 text-sm font-black text-[#241206] shadow-gold transition hover:-translate-y-0.5 hover:shadow-gold-lg">
+          Read Stories
+        </a>
+      </div>
+    </header>
+  );
+}
+
+function HeroArt() {
+  return (
+    <div className="hero-card relative overflow-hidden rounded-[2rem] border border-gold/50 bg-[#101936] shadow-2xl shadow-black/40">
+      <div className="absolute inset-0 bg-[radial-gradient(circle_at_42%_18%,rgba(255,190,66,0.95),transparent_8%),radial-gradient(circle_at_60%_34%,rgba(255,113,44,0.82),transparent_13%),linear-gradient(180deg,#18213d_0%,#2a1b22_43%,#1a120f_100%)]" />
+      <div className="absolute inset-0 opacity-75 bg-[radial-gradient(circle_at_30%_22%,rgba(255,255,255,.9)_0_1px,transparent_2px),radial-gradient(circle_at_76%_18%,rgba(244,200,106,.9)_0_1px,transparent_2px),radial-gradient(circle_at_12%_48%,rgba(255,255,255,.75)_0_1px,transparent_2px)] [background-size:180px_180px,240px_240px,300px_300px]" />
+      <div className="absolute left-0 right-0 top-[34%] h-[28%] bg-[linear-gradient(180deg,rgba(255,152,50,0.25),rgba(20,31,36,0.05)),radial-gradient(ellipse_at_center,rgba(255,224,126,0.85),transparent_40%)]" />
+      <div className="absolute inset-x-0 bottom-0 h-[48%] bg-[linear-gradient(180deg,transparent,#120b09_70%),radial-gradient(ellipse_at_65%_35%,rgba(131,84,39,0.5),transparent_26%)]" />
+
+      <div className="absolute right-[10%] top-[43%] h-36 w-36 rounded-full bg-[radial-gradient(circle,#fff7c8_0_7%,#ffae35_8%_26%,#ff5d1d_27%_42%,transparent_43%)] blur-[1px]" />
+      <div className="absolute right-[12%] top-[42%] h-32 w-24 animate-pulse bg-[radial-gradient(ellipse_at_center,#fff8bb_0_9%,#ffb23f_10%_28%,#e8521e_29%_48%,transparent_50%)]" style={{ clipPath: "polygon(50% 0%, 68% 34%, 88% 12%, 78% 54%, 100% 42%, 78% 75%, 58% 100%, 42% 100%, 22% 75%, 0 42%, 22% 54%, 12% 12%, 32% 34%)" }} />
+      <div className="absolute right-[8%] top-[58%] h-14 w-44 rounded-full border-[12px] border-[#7f4f28] bg-[#2a160e] shadow-xl" />
+
+      <div className="absolute left-[14%] bottom-[25%] h-28 w-24 rounded-b-[1.5rem] rounded-t-[.5rem] border-4 border-[#f5e5c8] bg-[#9b211d] shadow-xl">
+        <div className="absolute left-4 right-4 top-3 h-4 rounded-full bg-[#fff8ec]" />
+        <div className="absolute -left-8 top-10 h-14 w-10 rounded-full border-[7px] border-[#9b211d] bg-transparent" />
+        <div className="absolute left-8 -top-12 h-12 w-4 rounded-full bg-white/35 blur-sm" />
+      </div>
+
+      <div className="absolute left-[47%] bottom-[24%] h-52 w-20 rotate-[-9deg] rounded-[2rem] bg-[linear-gradient(90deg,#27150e,#6f472d,#1d100b)] shadow-2xl" />
+      <div className="absolute left-[58%] bottom-[24%] h-52 w-20 rotate-[10deg] rounded-[2rem] bg-[linear-gradient(90deg,#21110b,#7d5133,#1d100b)] shadow-2xl" />
+      <div className="absolute left-[46%] bottom-[18%] h-16 w-28 rotate-[-8deg] rounded-[50%] bg-[#1b0d08] shadow-2xl" />
+      <div className="absolute left-[56%] bottom-[18%] h-16 w-28 rotate-[8deg] rounded-[50%] bg-[#1b0d08] shadow-2xl" />
+
+      <div className="absolute bottom-0 left-0 right-0 h-[26%] bg-[linear-gradient(90deg,rgba(72,43,22,0.85),rgba(43,25,14,0.95)),repeating-linear-gradient(0deg,rgba(255,255,255,0.08)_0_1px,transparent_1px_10px)]" />
+
+      <div className="relative flex min-h-[540px] items-end p-6 md:min-h-[610px]">
+        <div className="grid w-full gap-5 rounded-[1.5rem] border border-gold/35 bg-cream/95 p-6 text-brown shadow-2xl backdrop-blur sm:grid-cols-[0.9fr_1px_1.1fr] sm:items-center md:p-8">
+          <div className="flex justify-center sm:justify-start">
+            <img src="/images/goddome-logo.svg" alt="God Dome" className="h-28 w-auto max-w-[250px] object-contain" />
+          </div>
+          <div className="hidden h-28 w-px bg-brown/30 sm:block" />
+          <div>
+            <p className="font-serif text-4xl font-black leading-tight text-brown">Faithful Words</p>
+            <p className="mt-3 max-w-sm text-lg font-bold leading-7 text-copper">warm stories, coffee, firelight, and faith</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+function HomePage() {
   return (
     <>
       <Head>
         <title>Faithful Words | God Dome</title>
         <meta name="description" content="Faithful Words by J.M. is the Christian story and reflection home of God Dome." />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <link rel="icon" href="/images/logo_resized.png" />
+        <link rel="icon" href="/images/goddome-logo.svg" />
       </Head>
-      <main className="min-h-screen bg-[#fbf1df] text-[#332319]">
-        <header className="sticky top-0 z-50 border-b border-[#d8b779]/30 bg-[#fbf1df]/90 backdrop-blur">
-          <div className="mx-auto flex max-w-6xl items-center justify-between px-6 py-4">
-            <a href="#home" className="flex items-center gap-3" aria-label="Faithful Words home">
-              <img src="/images/logo_resized.png" alt="God Dome logo" className="h-12 w-12 rounded-full object-contain shadow-sm" />
-              <div>
-                <p className="font-serif text-2xl font-bold leading-none text-[#5a341c]">Faithful Words</p>
-                <p className="mt-1 text-xs font-semibold uppercase tracking-[0.22em] text-[#9b6a2f]">Christian Stories by J.M.</p>
-              </div>
-            </a>
-            <nav className="hidden items-center gap-7 text-sm font-semibold text-[#5d4635] md:flex">
-              <a className="transition hover:text-[#9b6a2f]" href="#welcome">Welcome</a>
-              <a className="transition hover:text-[#9b6a2f]" href="#stories">Stories</a>
-              <a className="transition hover:text-[#9b6a2f]" href="#goddome">God Dome</a>
-              <a className="transition hover:text-[#9b6a2f]" href="#contact">Contact</a>
-            </nav>
-            <a href="#stories" className="rounded-full bg-[#8b5a2b] px-5 py-2.5 text-sm font-bold text-white shadow-sm transition hover:-translate-y-0.5 hover:bg-[#70451f]">Read Stories</a>
-          </div>
-        </header>
 
-        <section id="home" className="relative overflow-hidden">
-          <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_left,rgba(218,174,91,0.35),transparent_34%),radial-gradient(circle_at_bottom_right,rgba(137,90,43,0.16),transparent_34%)]" />
-          <div className="relative mx-auto grid max-w-6xl gap-12 px-6 py-16 md:grid-cols-[0.95fr_1.05fr] md:py-24">
-            <div className="flex flex-col justify-center">
-              <div className="mb-6 inline-flex w-fit rounded-full border border-[#c79b55]/30 bg-white/60 px-4 py-2 text-sm font-bold text-[#7b4d22] shadow-sm">A quiet place for Christian stories, reflection, and hope</div>
-              <h1 className="max-w-4xl font-serif text-5xl font-bold leading-tight tracking-tight text-[#4a2d1a] md:text-7xl">Faithful Words</h1>
-              <p className="mt-4 text-xl font-semibold uppercase tracking-[0.18em] text-[#9b6a2f]">Christian Stories by J.M.</p>
-              <p className="mt-7 max-w-2xl text-lg leading-8 text-[#6b5544] md:text-xl">Faithful Words is Jeanna’s Christian writing home on GodDome.org — a warm space for stories, devotionals, testimony, and gentle reminders of God’s love.</p>
-              <div className="mt-9 flex flex-col gap-3 sm:flex-row">
-                <a href="#stories" className="inline-flex items-center justify-center rounded-full bg-[#5a341c] px-7 py-3 font-bold text-white shadow-lg transition hover:-translate-y-0.5 hover:bg-[#3f2414]">Enter Faithful Words</a>
-                <a href="#goddome" className="inline-flex items-center justify-center rounded-full border border-[#c9aa75] bg-white/70 px-7 py-3 font-bold text-[#4a2d1a] shadow-sm transition hover:-translate-y-0.5 hover:bg-white">Learn About God Dome</a>
+      <main className="min-h-screen overflow-hidden bg-night text-cream">
+        <Header />
+
+        <section id="home" className="star-field relative min-h-screen px-6 pb-20 pt-44 md:pt-48">
+          <div className="mx-auto grid max-w-7xl items-center gap-14 lg:grid-cols-[0.82fr_1.18fr]">
+            <div className="relative z-10">
+              <div className="mb-8 inline-flex items-center gap-3 rounded-full border border-gold/45 bg-night/45 px-5 py-3 text-sm font-black text-gold shadow-lg backdrop-blur">
+                <span>✦</span>
+                A quiet place for Christian stories, reflection, and hope
+              </div>
+              <h1 className="font-serif text-6xl font-black leading-[0.92] tracking-tight text-cream text-shadow-gold md:text-8xl">
+                Faithful<br />Words
+              </h1>
+              <p className="mt-7 text-lg font-black uppercase tracking-[0.36em] text-gold md:text-xl">Christian Stories by J.M.</p>
+              <div className="my-6 h-px w-56 bg-gradient-to-r from-gold via-gold/60 to-transparent" />
+              <p className="max-w-2xl text-xl leading-9 text-cream/90">
+                Faithful Words is Jeanna’s Christian writing home on GodDome.org — a warm space for stories, devotionals, testimony, and gentle reminders of God’s love.
+              </p>
+              <div className="mt-10 flex flex-col gap-4 sm:flex-row">
+                <a href="#stories" className="rounded-full bg-gradient-to-br from-[#f7d078] to-[#b8792c] px-8 py-4 text-center font-black text-[#241206] shadow-gold transition hover:-translate-y-0.5 hover:shadow-gold-lg">Enter Faithful Words</a>
+                <a href="#goddome" className="rounded-full border border-gold/45 bg-night/35 px-8 py-4 text-center font-black text-gold backdrop-blur transition hover:-translate-y-0.5 hover:bg-gold/10">Learn About God Dome</a>
               </div>
             </div>
 
-            <div className="relative">
-              <div className="overflow-hidden rounded-[2rem] border border-white/70 bg-white/65 p-3 shadow-2xl backdrop-blur">
-                <div className="relative overflow-hidden rounded-[1.5rem]">
-                  <img src={heroImage} alt="Woman in cowboy boots holding a red coffee cup while looking toward a fire pit at sunset" className="h-[390px] w-full object-cover md:h-[520px]" />
-                  <div className="absolute inset-0 bg-gradient-to-t from-[#2a170b]/65 via-transparent to-transparent" />
-                  <div className="absolute bottom-5 left-5 right-5 rounded-2xl bg-[#fffaf1]/90 p-5 shadow-lg backdrop-blur">
-                    <div className="flex items-center gap-4">
-                      <img src="/images/logo_resized.png" alt="God Dome emblem" className="h-14 w-14 object-contain" />
-                      <div>
-                        <p className="font-serif text-2xl font-bold text-[#5a341c]">Faithful Words</p>
-                        <p className="text-sm font-semibold text-[#8b5a2b]">warm stories, coffee, firelight, and faith</p>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
+            <HeroArt />
           </div>
         </section>
 
-        <section id="welcome" className="mx-auto max-w-6xl px-6 py-20">
+        <section id="welcome" className="relative z-10 mx-auto my-16 max-w-6xl rounded-[2rem] border border-gold/30 bg-cream/95 px-6 py-16 text-brown shadow-2xl shadow-black/30 backdrop-blur md:px-12">
           <div className="mx-auto max-w-3xl text-center">
-            <p className="text-sm font-black uppercase tracking-[0.3em] text-[#9b6a2f]">Welcome</p>
-            <h2 className="mt-4 font-serif text-4xl font-bold tracking-tight text-[#4a2d1a] md:text-5xl">A gentle corner of God Dome for Jeanna’s writings.</h2>
-            <p className="mt-6 text-lg leading-8 text-[#6b5544]">This site should feel peaceful, personal, and sincere — like opening a well-loved book beside a warm lamp. God Dome remains the nonprofit home, while Faithful Words gives Jeanna’s stories room to breathe.</p>
-          </div>
-          <div className="mt-14 grid gap-6 md:grid-cols-3">
-            {storyCards.map((card) => <article key={card.title} className="rounded-[1.5rem] border border-[#d8b779]/40 bg-white/75 p-7 shadow-sm transition hover:-translate-y-1 hover:shadow-xl"><div className="mb-6 flex h-12 w-12 items-center justify-center rounded-full bg-[#f2dfbd] text-2xl text-[#8b5a2b]">✦</div><h3 className="font-serif text-2xl font-bold text-[#4a2d1a]">{card.title}</h3><p className="mt-4 leading-7 text-[#6b5544]">{card.text}</p></article>)}
-          </div>
-        </section>
-
-        <section id="stories" className="bg-[#4a2d1a] px-6 py-20 text-white">
-          <div className="mx-auto grid max-w-6xl gap-10 md:grid-cols-[0.85fr_1.15fr] md:items-center">
-            <div><p className="text-sm font-black uppercase tracking-[0.3em] text-[#f3cf87]">Christian Stories</p><h2 className="mt-4 font-serif text-4xl font-bold tracking-tight md:text-5xl">Faithful Words by Jeanna’</h2><p className="mt-6 text-lg leading-8 text-[#ead9be]">Stories will be published in a simple, readable format with room for Scripture, featured images, and a calm reading experience. Each writing can be credited as “By J.M.”</p><a href="https://rockwallbodyandsoul.com/" className="mt-8 inline-flex rounded-full bg-[#f3cf87] px-7 py-3 font-black text-[#4a2d1a] transition hover:-translate-y-0.5 hover:bg-[#ffe0a1]">Visit Jeanna’s Website</a></div>
-            <div className="grid gap-5 sm:grid-cols-3">{["Stories", "Devotionals", "Reflections"].map((item) => <article key={item} className="rounded-[1.5rem] border border-white/10 bg-white/10 p-6 backdrop-blur"><div className="text-3xl">✍️</div><h3 className="mt-5 font-serif text-2xl font-bold">{item}</h3><p className="mt-3 text-sm leading-6 text-[#ead9be]">A warm reading layout for faith-centered writing, image-supported posts, and quiet encouragement.</p></article>)}</div>
+            <p className="text-sm font-black uppercase tracking-[0.34em] text-copper">Welcome</p>
+            <h2 className="mt-4 font-serif text-5xl font-black leading-tight md:text-6xl">A gentle corner of God Dome for Jeanna’s writings.</h2>
+            <p className="mt-7 text-lg leading-9 text-brown/80">
+              This site should feel peaceful, personal, and sincere — like opening a well-loved book beside a warm lamp. God Dome remains the ministry home, while Faithful Words gives Jeanna’s stories room to breathe.
+            </p>
           </div>
         </section>
 
-        <section id="goddome" className="mx-auto max-w-6xl px-6 py-20"><div className="rounded-[2rem] bg-gradient-to-br from-[#f3d99f] via-[#fff8ec] to-white p-8 shadow-xl md:p-12"><div className="grid gap-10 md:grid-cols-[1fr_0.8fr] md:items-center"><div><p className="text-sm font-black uppercase tracking-[0.3em] text-[#8b5a2b]">God Dome</p><h2 className="mt-4 font-serif text-4xl font-bold tracking-tight text-[#4a2d1a] md:text-5xl">The nonprofit home around the writing ministry.</h2><p className="mt-6 text-lg leading-8 text-[#6b5544]">God Dome provides the broader ministry foundation: prayer, outreach, nonprofit updates, giving, and faith-based projects. Faithful Words is the storytelling and reflection branch where Jeanna’s voice can remain front and center.</p><p className="mt-6 rounded-2xl bg-white/70 p-5 text-base italic leading-7 text-[#6b5544] shadow-sm">“My house shall be called a house of prayer for all nations.” — Isaiah 56:7</p></div><div id="donate" className="rounded-[1.5rem] bg-white p-7 shadow-lg"><div className="text-4xl">❤️</div><h3 className="mt-5 font-serif text-2xl font-bold text-[#4a2d1a]">Support the Mission</h3><p className="mt-3 leading-7 text-[#6b5544]">Donation buttons can be added here once the PayPal links are connected. This section will remain soft, simple, and ministry-focused.</p><div className="mt-6 grid gap-3"><a href="mailto:info@goddome.org?subject=God%20Dome%20Donation" className="rounded-full bg-[#5a341c] px-5 py-3 text-center font-bold text-white transition hover:bg-[#3f2414]">Request Donation Link</a><a href="#contact" className="rounded-full border border-[#c9aa75] px-5 py-3 text-center font-bold text-[#4a2d1a] transition hover:bg-[#fff8ec]">Contact God Dome</a></div></div></div></div></section>
+        <section id="stories" className="relative z-10 mx-auto max-w-7xl px-6 py-20">
+          <div className="mb-12 max-w-3xl">
+            <p className="text-sm font-black uppercase tracking-[0.34em] text-gold">Stories</p>
+            <h2 className="mt-4 font-serif text-5xl font-black md:text-6xl">Christian Stories by Jeanna’</h2>
+          </div>
+          <div className="grid gap-6 md:grid-cols-3">
+            {storyCards.map((card) => (
+              <article key={card.title} className="rounded-[1.5rem] border border-gold/25 bg-cream/95 p-7 text-brown shadow-xl shadow-black/20 transition hover:-translate-y-1 hover:border-gold/55">
+                <div className="mb-6 flex h-12 w-12 items-center justify-center rounded-full bg-gold/25 text-2xl text-copper">✦</div>
+                <h3 className="font-serif text-3xl font-black">{card.title}</h3>
+                <p className="mt-4 leading-8 text-brown/80">{card.text}</p>
+              </article>
+            ))}
+          </div>
+        </section>
 
-        <section className="mx-auto max-w-6xl px-6 pb-20"><div className="grid gap-4 sm:grid-cols-2 md:grid-cols-6">{values.map((value) => <div key={value} className="rounded-2xl border border-[#d8b779]/40 bg-white/75 p-5 text-center font-bold text-[#5a341c] shadow-sm">{value}</div>)}</div></section>
-        <footer id="contact" className="border-t border-[#d8b779]/30 bg-[#fffaf1] px-6 py-12"><div className="mx-auto flex max-w-6xl flex-col gap-6 md:flex-row md:items-center md:justify-between"><div><p className="font-serif text-2xl font-bold text-[#4a2d1a]">Faithful Words | God Dome</p><p className="mt-2 text-[#6b5544]">Christian stories by J.M. and the God Dome ministry home.</p></div><div className="flex flex-col gap-3 sm:flex-row"><a href="mailto:info@goddome.org" className="inline-flex items-center justify-center rounded-full border border-[#c9aa75] px-5 py-3 font-bold text-[#4a2d1a] hover:bg-white">Contact</a><a href="#stories" className="inline-flex items-center justify-center rounded-full bg-[#8b5a2b] px-5 py-3 font-bold text-white hover:bg-[#70451f]">Read Stories</a></div></div></footer>
+        <section id="goddome" className="relative z-10 mx-auto max-w-6xl px-6 py-20">
+          <div className="rounded-[2rem] border border-gold/35 bg-gradient-to-br from-cream via-[#fff8ec] to-[#f4d995] p-8 text-brown shadow-2xl shadow-black/30 md:p-12">
+            <div className="grid gap-10 md:grid-cols-[1fr_0.8fr] md:items-center">
+              <div>
+                <p className="text-sm font-black uppercase tracking-[0.34em] text-copper">God Dome</p>
+                <h2 className="mt-4 font-serif text-5xl font-black leading-tight">The ministry home around the writing.</h2>
+                <p className="mt-6 text-lg leading-9 text-brown/80">
+                  God Dome provides the broader foundation for prayer, outreach, giving, restoration, and future nonprofit updates. Faithful Words is the storytelling branch where Jeanna’s voice can remain warm, personal, and central.
+                </p>
+              </div>
+              <div className="rounded-[1.5rem] bg-white/70 p-7 shadow-xl">
+                <div className="text-4xl">❤️</div>
+                <h3 className="mt-5 font-serif text-3xl font-black">Support the Mission</h3>
+                <p className="mt-3 leading-8 text-brown/75">Donation buttons and PayPal giving links can be added here once final giving links are connected.</p>
+                <a href="mailto:info@goddome.org?subject=God%20Dome" className="mt-6 inline-flex rounded-full bg-brown px-6 py-3 font-black text-cream">Contact God Dome</a>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section className="relative z-10 mx-auto max-w-7xl px-6 pb-20">
+          <div className="grid gap-4 sm:grid-cols-2 md:grid-cols-6">
+            {values.map((value) => (
+              <div key={value} className="rounded-2xl border border-gold/25 bg-night/45 p-5 text-center font-black text-gold shadow-lg backdrop-blur">{value}</div>
+            ))}
+          </div>
+        </section>
+
+        <footer id="contact" className="relative z-10 border-t border-gold/20 bg-night/70 px-6 py-12 backdrop-blur">
+          <div className="mx-auto flex max-w-7xl flex-col gap-6 md:flex-row md:items-center md:justify-between">
+            <div className="flex items-center gap-4">
+              <img src="/images/goddome-logo.svg" alt="God Dome" className="h-20 w-auto" />
+              <div>
+                <p className="font-serif text-2xl font-black">Faithful Words | God Dome</p>
+                <p className="mt-1 text-cream/70">Christian stories by J.M. and the God Dome ministry home.</p>
+              </div>
+            </div>
+            <a href="mailto:info@goddome.org" className="rounded-full border border-gold/35 px-6 py-3 text-center font-black text-gold">info@goddome.org</a>
+          </div>
+        </footer>
       </main>
     </>
   );
 }
+
+export default HomePage;
