@@ -1,10 +1,10 @@
 /* Header transparency and scroll-shrink behavior for the starry Faithful Words theme. */
 header {
-  background: transparent !important;
-  -webkit-backdrop-filter: none !important;
-  backdrop-filter: none !important;
-  box-shadow: none !important;
-  border-bottom-color: transparent !important;
+  background: rgba(7, 11, 26, 0.42) !important;
+  -webkit-backdrop-filter: blur(10px) saturate(120%);
+  backdrop-filter: blur(10px) saturate(120%);
+  box-shadow: 0 10px 34px rgba(0, 0, 0, 0.14) !important;
+  border-bottom: 1px solid rgba(244, 200, 106, 0.16) !important;
   transition: background 220ms ease, box-shadow 220ms ease, border-color 220ms ease;
 }
 
@@ -41,7 +41,7 @@ header a[href="#stories"] {
 
 @supports (animation-timeline: scroll()) {
   header {
-    animation: header-clear-shrink linear both;
+    animation: header-frosted-shrink linear both;
     animation-timeline: scroll(root block);
     animation-range: 0 170px;
   }
@@ -65,16 +65,16 @@ header a[href="#stories"] {
   }
 }
 
-@keyframes header-clear-shrink {
+@keyframes header-frosted-shrink {
   from {
-    background: transparent;
-    box-shadow: none;
-    border-color: transparent;
+    background: rgba(7, 11, 26, 0.34);
+    box-shadow: 0 10px 34px rgba(0, 0, 0, 0.12);
+    border-color: rgba(244, 200, 106, 0.14);
   }
   to {
-    background: transparent;
-    box-shadow: none;
-    border-color: transparent;
+    background: rgba(7, 11, 26, 0.62);
+    box-shadow: 0 14px 42px rgba(0, 0, 0, 0.24);
+    border-color: rgba(244, 200, 106, 0.24);
   }
 }
 
@@ -118,7 +118,7 @@ header a[href="#stories"] {
 /* Fallback for browsers without scroll-linked CSS animation. */
 @supports not (animation-timeline: scroll()) {
   header {
-    background: transparent !important;
+    background: rgba(7, 11, 26, 0.50) !important;
   }
 
   header > div {
