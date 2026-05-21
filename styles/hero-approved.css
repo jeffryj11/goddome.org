@@ -1,0 +1,18 @@
+/* Approved Faithful Words hero refinements. This file keeps the current layout but sharpens the approved visual direction. */
+#home .relative.overflow-hidden.rounded-\[1\.5rem\] > img {
+  image-rendering: auto;
+  filter: contrast(1.06) saturate(1.08) brightness(1.02);
+}
+
+#home .relative.overflow-hidden.rounded-\[1\.5rem\] {
+  border: 1px solid rgba(244, 200, 106, 0.52);
+  box-shadow: 0 0 0 1px rgba(244, 200, 106, 0.18), 0 26px 80px rgba(0, 0, 0, 0.42);
+}
+
+#home .relative.overflow-hidden.rounded-\[1\.5rem\]::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: linear-gradient(180deg, rgba(6, 10, 26, 0.02), rgba(6, 10, 26, 0.18));
+}
