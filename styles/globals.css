@@ -1,4 +1,8 @@
-
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+/* Temporary logo fallback: the original PNG in this repo is empty, so render the SVG God Dome logo wherever that path is used. */
+img[src="/images/logo_resized.png"] {
+  content: url('/images/goddome-logo.svg');
+}
