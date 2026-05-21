@@ -1,0 +1,136 @@
+/* Header transparency and scroll-shrink behavior for the starry Faithful Words theme. */
+header {
+  background: rgba(7, 11, 26, 0.54) !important;
+  -webkit-backdrop-filter: blur(14px);
+  backdrop-filter: blur(14px);
+  transition: background 220ms ease, box-shadow 220ms ease, border-color 220ms ease;
+}
+
+header > div {
+  transition: padding 220ms ease, max-width 220ms ease;
+}
+
+header img[src="/images/logo_resized.png"] {
+  transition: height 220ms ease, max-width 220ms ease, filter 220ms ease;
+}
+
+header a[href="#stories"] {
+  transition: padding 220ms ease, transform 220ms ease, box-shadow 220ms ease;
+}
+
+@supports (animation-timeline: scroll()) {
+  header {
+    animation: header-glass-shrink linear both;
+    animation-timeline: scroll(root block);
+    animation-range: 0 170px;
+  }
+
+  header > div {
+    animation: header-inner-shrink linear both;
+    animation-timeline: scroll(root block);
+    animation-range: 0 170px;
+  }
+
+  header img[src="/images/logo_resized.png"] {
+    animation: header-logo-shrink linear both;
+    animation-timeline: scroll(root block);
+    animation-range: 0 170px;
+  }
+
+  header a[href="#stories"] {
+    animation: header-button-shrink linear both;
+    animation-timeline: scroll(root block);
+    animation-range: 0 170px;
+  }
+}
+
+@keyframes header-glass-shrink {
+  from {
+    background: rgba(7, 11, 26, 0.38);
+    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.12);
+    border-color: rgba(244, 200, 106, 0.18);
+  }
+  to {
+    background: rgba(7, 11, 26, 0.82);
+    box-shadow: 0 14px 42px rgba(0, 0, 0, 0.28);
+    border-color: rgba(244, 200, 106, 0.34);
+  }
+}
+
+@keyframes header-inner-shrink {
+  from {
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+  }
+  to {
+    padding-top: 0.45rem;
+    padding-bottom: 0.45rem;
+  }
+}
+
+@keyframes header-logo-shrink {
+  from {
+    height: 96px;
+    max-width: 235px;
+    filter: drop-shadow(0 0 14px rgba(244, 200, 106, 0.45));
+  }
+  to {
+    height: 68px;
+    max-width: 175px;
+    filter: drop-shadow(0 0 10px rgba(244, 200, 106, 0.36));
+  }
+}
+
+@keyframes header-button-shrink {
+  from {
+    padding-top: 0.75rem;
+    padding-bottom: 0.75rem;
+    transform: scale(1);
+  }
+  to {
+    padding-top: 0.55rem;
+    padding-bottom: 0.55rem;
+    transform: scale(0.96);
+  }
+}
+
+/* Fallback for browsers without scroll-linked CSS animation: keep the header a little lighter and smaller by default. */
+@supports not (animation-timeline: scroll()) {
+  header {
+    background: rgba(7, 11, 26, 0.66) !important;
+  }
+
+  header > div {
+    padding-top: 0.7rem !important;
+    padding-bottom: 0.7rem !important;
+  }
+
+  header img[src="/images/logo_resized.png"] {
+    height: 78px !important;
+    max-width: 195px !important;
+  }
+}
+
+@media (max-width: 767px) {
+  @keyframes header-logo-shrink {
+    from {
+      height: 70px;
+      max-width: 160px;
+    }
+    to {
+      height: 54px;
+      max-width: 130px;
+    }
+  }
+
+  @keyframes header-inner-shrink {
+    from {
+      padding-top: 0.75rem;
+      padding-bottom: 0.75rem;
+    }
+    to {
+      padding-top: 0.4rem;
+      padding-bottom: 0.4rem;
+    }
+  }
+}
