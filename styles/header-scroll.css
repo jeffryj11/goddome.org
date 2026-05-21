@@ -1,8 +1,10 @@
 /* Header transparency and scroll-shrink behavior for the starry Faithful Words theme. */
 header {
-  background: rgba(7, 11, 26, 0.54) !important;
-  -webkit-backdrop-filter: blur(14px);
-  backdrop-filter: blur(14px);
+  background: transparent !important;
+  -webkit-backdrop-filter: none !important;
+  backdrop-filter: none !important;
+  box-shadow: none !important;
+  border-bottom-color: transparent !important;
   transition: background 220ms ease, box-shadow 220ms ease, border-color 220ms ease;
 }
 
@@ -14,13 +16,32 @@ header img[src="/images/logo_resized.png"] {
   transition: height 220ms ease, max-width 220ms ease, filter 220ms ease;
 }
 
+header nav a,
+header nav a:link,
+header nav a:visited,
+header nav a:hover,
+header nav a:focus,
+header nav a:active {
+  background: transparent !important;
+  box-shadow: none !important;
+  outline: none !important;
+  color: #fff4df !important;
+  text-decoration: none !important;
+}
+
+header nav a:hover,
+header nav a:focus-visible {
+  color: #f4c86a !important;
+  text-shadow: 0 0 14px rgba(244, 200, 106, 0.34);
+}
+
 header a[href="#stories"] {
   transition: padding 220ms ease, transform 220ms ease, box-shadow 220ms ease;
 }
 
 @supports (animation-timeline: scroll()) {
   header {
-    animation: header-glass-shrink linear both;
+    animation: header-clear-shrink linear both;
     animation-timeline: scroll(root block);
     animation-range: 0 170px;
   }
@@ -44,16 +65,16 @@ header a[href="#stories"] {
   }
 }
 
-@keyframes header-glass-shrink {
+@keyframes header-clear-shrink {
   from {
-    background: rgba(7, 11, 26, 0.38);
-    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.12);
-    border-color: rgba(244, 200, 106, 0.18);
+    background: transparent;
+    box-shadow: none;
+    border-color: transparent;
   }
   to {
-    background: rgba(7, 11, 26, 0.82);
-    box-shadow: 0 14px 42px rgba(0, 0, 0, 0.28);
-    border-color: rgba(244, 200, 106, 0.34);
+    background: transparent;
+    box-shadow: none;
+    border-color: transparent;
   }
 }
 
@@ -94,10 +115,10 @@ header a[href="#stories"] {
   }
 }
 
-/* Fallback for browsers without scroll-linked CSS animation: keep the header a little lighter and smaller by default. */
+/* Fallback for browsers without scroll-linked CSS animation. */
 @supports not (animation-timeline: scroll()) {
   header {
-    background: rgba(7, 11, 26, 0.66) !important;
+    background: transparent !important;
   }
 
   header > div {
