@@ -1,0 +1,56 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" role="img" aria-labelledby="title desc">
+  <title id="title">God Dome Logo</title>
+  <desc id="desc">Gold dome with cross, dove, Star of David, and American flag motif.</desc>
+  <defs>
+    <radialGradient id="gold" cx="50%" cy="35%" r="70%">
+      <stop offset="0%" stop-color="#fff7c7"/>
+      <stop offset="45%" stop-color="#d8a63c"/>
+      <stop offset="100%" stop-color="#8b5a1f"/>
+    </radialGradient>
+    <linearGradient id="sky" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#fff8ec"/>
+      <stop offset="100%" stop-color="#f1d29b"/>
+    </linearGradient>
+    <filter id="glow" x="-40%" y="-40%" width="180%" height="180%">
+      <feGaussianBlur stdDeviation="8" result="blur"/>
+      <feColorMatrix in="blur" type="matrix" values="1 0 0 0 0.95  0 1 0 0 0.67  0 0 1 0 0.18  0 0 0 .8 0" result="goldglow"/>
+      <feMerge>
+        <feMergeNode in="goldglow"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+  </defs>
+  <circle cx="256" cy="256" r="244" fill="url(#sky)" stroke="#b7832f" stroke-width="14"/>
+  <circle cx="256" cy="256" r="218" fill="none" stroke="#f4d891" stroke-width="8" opacity="0.9"/>
+
+  <g filter="url(#glow)">
+    <path d="M112 324c20-84 77-138 144-138s124 54 144 138H112Z" fill="url(#gold)" stroke="#6f451c" stroke-width="9"/>
+    <path d="M88 334h336v38H88z" fill="#6f451c"/>
+    <path d="M105 345h302" stroke="#f9dfa1" stroke-width="9" stroke-linecap="round"/>
+    <path d="M256 88v112" stroke="#6f451c" stroke-width="22" stroke-linecap="round"/>
+    <path d="M215 132h82" stroke="#6f451c" stroke-width="22" stroke-linecap="round"/>
+    <path d="M256 95v98" stroke="#fff1b6" stroke-width="8" stroke-linecap="round" opacity="0.75"/>
+  </g>
+
+  <g transform="translate(159 238)" fill="white" opacity="0.96">
+    <path d="M64 11c-30 5-50 24-59 51 22-11 43-9 64 6-16-22-16-41-5-57Z"/>
+    <path d="M82 8c30 5 50 24 59 51-22-11-43-9-64 6 16-22 16-41 5-57Z"/>
+    <path d="M73 52c12 22 7 43-15 64 27-8 47-23 60-45-15 3-30-3-45-19Z"/>
+  </g>
+
+  <g transform="translate(338 126) scale(.55)" fill="none" stroke="#24539b" stroke-width="13" stroke-linejoin="round">
+    <path d="M80 6 148 124H12Z"/>
+    <path d="M80 130 12 12h136Z"/>
+  </g>
+
+  <g transform="translate(116 122)">
+    <rect x="0" y="0" width="100" height="58" rx="10" fill="#fff" stroke="#6f451c" stroke-width="5"/>
+    <path d="M0 0h100v12H0zm0 24h100v12H0zm0 24h100v10H0z" fill="#b22234"/>
+    <rect x="0" y="0" width="44" height="32" rx="8" fill="#3c3b6e"/>
+    <circle cx="12" cy="10" r="3" fill="#fff"/><circle cx="25" cy="10" r="3" fill="#fff"/><circle cx="36" cy="10" r="3" fill="#fff"/>
+    <circle cx="18" cy="22" r="3" fill="#fff"/><circle cx="31" cy="22" r="3" fill="#fff"/>
+  </g>
+
+  <text x="256" y="420" text-anchor="middle" font-family="Georgia, 'Times New Roman', serif" font-size="48" font-weight="700" fill="#5a341c">God Dome</text>
+  <text x="256" y="452" text-anchor="middle" font-family="Arial, sans-serif" font-size="18" font-weight="700" letter-spacing="4" fill="#9b6a2f">FAITHFUL WORDS</text>
+</svg>
